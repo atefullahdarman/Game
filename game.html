@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Plane Shooter Game</title>
+    <!-- <link rel="stylesheet" href="game.css" /> -->
+    <link rel="stylesheet" href="game.css">
+</head>
+
+<body>
+    
+    <div id="app">
+        <!-- Canvas Area -->
+        <div id="canvas-wrap">
+            <canvas id="gameCanvas" width="900" height="600"></canvas>
+            <!-- Overlays (Start / Pause / Game Over) -->
+            <div id="overlay" class="overlay">
+                <!-- Main Menu -->
+                <div id="menu" class="menu">
+                    <h1>✈ Plane Shooter Game</h1>
+                    <p class="muted">Shoot the enemies. If 3 enemies pass through, the game
+                        ends.</p>
+                    <div class="menu-row">
+                        <button id="startBtn" class="btn primary">Start</button>
+                        <button id="settingsBtn" class="btn">Settings</button>
+                    </div>
+                    <div class="menu-row small">
+                        <div>Best: <strong id="menuBest">0</strong></div>
+                        <div>Highest Level: <strong id="menuLevel">1</strong></div>
+                    </div>
+                    <p class="hint">Keyboard: ← → to move, Space to shoot | Mobile: tap left/right
+                        and FIRE button</p>
+                </div>
+                <!-- Pause Panel -->
+                <div id="pausePanel" class="menu hidden">
+                    <h2>Paused</h2>
+                    <div class="menu-row">
+                        <button id="resumeBtn" class="btn primary">Resume</button>
+                        <button id="restartBtn" class="btn">Restart</button>
+                    </div>
+                </div>
+                <!-- Game Over Panel -->
+                <div id="gameOver" class="menu hidden">
+                    <h2>Game Over</h2>
+                    <p>Your Score: <strong id="finalScore">0</strong></p>
+                    <p>Best: <strong id="finalBest">0</strong></p>
+                    <div class="menu-row">
+                        <button id="goMenuBtn" class="btn">Main Menu</button>
+                        <button id="tryAgainBtn" class="btn primary">Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- HUD: Sidebar -->
+        <aside id="hud">
+
+            <div class="stat">Score: <span id="score">0</span></div>
+            <div class="stat">Misses: <span id="misses">0</span> / 3</div>
+            <div class="stat">Level: <span id="level">1</span></div>
+            <div class="stat">Best: <span id="best">0</span></div>
+            <div class="controls-info muted">Mobile: Tap left/right + FIRE button</div>
+            <!-- Mobile Virtual Controls -->
+            <div id="mobile-controls" class="mobile-controls hidden">
+                <button id="leftBtn" class="vc btn-small">◀</button>
+                <button id="fireBtn" class="vc btn-fire">FIRE</button>
+                <button id="rightBtn" class="vc btn-small">▶</button>
+            </div>
+            <div class="footer muted">Simple and clean game — ask if you want morefeatures</div>
+        </aside>
+    </div>
+    <script src="game.js"></script>
+</body>
+
+</html>

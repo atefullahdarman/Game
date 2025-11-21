@@ -1,0 +1,246 @@
+:root {
+    --bg-1: linear-gradient(180deg, #249f26, pink);
+    --panel: rgba(179, 73, 73, 0.991);
+    --accent: #face60;
+    --accent-2: #ff7aa2;
+    --muted: black(255, 126, 126, 0.65);
+    --card: rgb(217, 75, 75);
+    /* background-image: url(atefullah.jpg); */
+    background-color: #ef5b86;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Inter, system-ui, -apple-system,
+        "Segoe UI"
+        , Roboto,
+        "Noto Sans"
+        , sans-serif
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    background: var(--bg-1);
+    background-color: rgb(207, 92, 92);
+    /* background-image: url(atefullah.jpg); */
+    color: #eef2ff
+}
+
+#app {
+    display: flex;
+    gap: 18px;
+    padding: 18px;
+    align-items: flex-start;
+    justify-content: center
+}
+
+/* Canvas area */
+#canvas-wrap {
+    position: relative;
+    width: calc(100vw - 360px);
+    max-width: 980px;
+    min-width: 320px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(101, 14, 126, 1.2);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+
+
+}
+
+/* responsive canvas */
+canvas {
+    display: block;
+    width: 100%;
+    height: calc((100vw - 360px) * 0.66);
+    max-height: 640px;
+    background: linear-gradient(180deg, #d64f4fb5, #3a2809);
+    /* background-image: url(atefullah.jpg); */
+
+}
+
+/* Overlay menus */
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none
+}
+
+.menu {
+    background: var(--card);
+    backdrop-filter:
+        blur(8px);
+    padding: 20px;
+    border-radius: 12px;
+    min-width: 280px;
+    max-width: 420px;
+    text-align: ce nter;
+    pointer-events: auto
+}
+
+.menu h1 {
+    margin: 0 0 8px;
+    font-size: 22px;
+    color: #fff
+}
+
+.menu h2 {
+    margin: 0 0 8px
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 13px
+}
+
+.hint {
+    font-size: 12px;
+    margin-top: 10px;
+    color: var(--muted)
+}
+
+.menu-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 12px
+}
+
+.menu-row.small {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-size: 14px;
+    padding-top: 8px
+}
+
+/* Buttons */
+.btn {
+    background: transparent;
+    border: 1px solid rgba(232, 52, 52, 0.727);
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: #f9fbff;
+    cursor: pointer;
+    font-weight: 600
+}
+
+.btn.primary {
+    background: linear-gradient(180deg, var(--accent), #9e1f9e);
+    box-shadow: 0 6px 18px rgba(161, 193, 18, 0.851)
+}
+
+.btn:hover {
+    transform: translateY(-2px)
+}
+
+.hidden {
+    display: none
+}
+
+/* HUD */
+aside#hud {
+    width: 300px;
+    max-width: 36vw;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px
+}
+
+.stat {
+    background: var(--panel);
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    color: #fff
+}
+
+.controls-info {
+    font-size: 13px;
+    color: var(--muted)
+}
+
+.footer {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: auto
+}
+
+/* Mobile virtual controls */
+.mobile-controls {
+
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top:8px;
+
+}
+
+.vc {
+
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(240, 54, 54, 0.835);
+    background: rgba(255, 255, 255, 0.02);
+    /* background-image: url(atefullah.jpg); */
+    color: #fff;
+    font-weight: 700;
+
+}
+
+.btn-fire {
+
+    background: linear-gradient(180deg, var(--accent-2), #ef5b86);
+    box-shadow: 0 6px 16px rgba(255, 122, 162, 0.12)
+}
+
+.btn-small {
+    
+    width: 64px
+}
+
+/* responsive adjustments */
+@media (max-width:900px) {
+    #app {
+        flex-direction: column;
+        align-items: center;
+        padding: 12px
+    }
+
+    #canvas-wrap {
+        width: 94vw
+    }
+
+    canvas {
+        height: 56vh
+    }
+
+    aside#hud {
+        width: 94vw;
+        max-width: none
+    }
+
+    .overlay {
+        pointer-events: none
+    }
+
+    .menu {
+        min-width: 86vw
+    }
+
+    .mobile-controls.hidden {
+        display: flex
+    }
+}
+
+/* small polish */
+.menu .muted {
+    margin-top: 6px
+}
