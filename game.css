@@ -1,246 +1,206 @@
-:root {
-    --bg-1: linear-gradient(180deg, #249f26, pink);
-    --panel: rgba(179, 73, 73, 0.991);
-    --accent: #face60;
-    --accent-2: #ff7aa2;
-    --muted: black(255, 126, 126, 0.65);
-    --card: rgb(217, 75, 75);
-    /* background-image: url(atefullah.jpg); */
-    background-color: #ef5b86;
-}
-
 * {
-    box-sizing: border-box;
-    font-family: Inter, system-ui, -apple-system,
-        "Segoe UI"
-        , Roboto,
-        "Noto Sans"
-        , sans-serif
-}
-
-body {
-    height: 100%;
     margin: 0;
-    background: var(--bg-1);
-    background-color: rgb(207, 92, 92);
-    /* background-image: url(atefullah.jpg); */
-    color: #eef2ff
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
 }
 
+/* ------------------------------
+   Body Background – Galaxy Theme
+--------------------------------*/
+body {
+    background: radial-gradient(circle at 20% 20%, #0a0f24, #000),
+        url('https://i.ibb.co/4t9k7YZ/stars-bg.png');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+}
+
+/* ------------------------------
+   App Layout
+--------------------------------*/
 #app {
     display: flex;
-    gap: 18px;
-    padding: 18px;
-    align-items: flex-start;
-    justify-content: center
+    height: 100vh;
+    width: 100vw;
+    padding: 10px;
+    gap: 10px;
 }
 
-/* Canvas area */
+/* Canvas Wrapper */
 #canvas-wrap {
+    flex: 3;
     position: relative;
-    width: calc(100vw - 360px);
-    max-width: 980px;
-    min-width: 320px;
-    border-radius: 30px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 12px 40px rgba(101, 14, 126, 1.2);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
-
-
+    box-shadow: 0 0 25px rgba(0, 170, 255, 0.4);
 }
 
-/* responsive canvas */
-canvas {
-    display: block;
+/* Canvas */
+#gameCanvas {
     width: 100%;
-    height: calc((100vw - 360px) * 0.66);
-    max-height: 640px;
-    background: linear-gradient(180deg, #d64f4fb5, #3a2809);
-    /* background-image: url(atefullah.jpg); */
-
+    height: 100%;
+    background: transparent;
 }
 
-/* Overlay menus */
+/* ------------------------------
+   HUD Panel (Right Side)
+--------------------------------*/
+#hud {
+    flex: 1;
+    padding: 20px;
+    background: rgba(15, 20, 35, 0.7);
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 30px rgba(0, 230, 255, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stat {
+    font-size: 22px;
+    font-weight: bold;
+    color: #7ddcff;
+}
+
+.muted {
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+.footer {
+    margin-top: auto;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* ------------------------------
+   Overlay (Menus)
+--------------------------------*/
 .overlay {
     position: absolute;
     inset: 0;
     display: flex;
-    align-items: center;
     justify-content: center;
-    pointer-events: none
+    align-items: center;
 }
 
 .menu {
-    background: var(--card);
-    backdrop-filter:
-        blur(8px);
-    padding: 20px;
-    border-radius: 12px;
-    min-width: 280px;
+    background: rgba(0, 0, 25, 0.6);
+    border: 1px solid #00d0ff;
+    padding: 30px;
+    width: 85%;
     max-width: 420px;
-    text-align: ce nter;
-    pointer-events: auto
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(0, 200, 255, 0.3);
 }
 
-.menu h1 {
-    margin: 0 0 8px;
-    font-size: 22px;
-    color: #fff
+.menu.hidden {
+    display: none;
 }
 
+.menu h1,
 .menu h2 {
-    margin: 0 0 8px
-}
-
-.muted {
-    color: var(--muted);
-    font-size: 13px
-}
-
-.hint {
-    font-size: 12px;
-    margin-top: 10px;
-    color: var(--muted)
+    color: #81e4ff;
+    text-shadow: 0 0 12px #00d4ff;
 }
 
 .menu-row {
+    margin-top: 18px;
     display: flex;
-    gap: 10px;
     justify-content: center;
-    margin-top: 12px
+    gap: 12px;
 }
 
-.menu-row.small {
-    display: flex;
-    justify-content: space-between;
-    color: var(--muted);
-    font-size: 14px;
-    padding-top: 8px
-}
-
-/* Buttons */
+/* ------------------------------
+   Buttons
+--------------------------------*/
 .btn {
-    background: transparent;
-    border: 1px solid rgba(232, 52, 52, 0.727);
-    padding: 10px 14px;
-    border-radius: 10px;
-    color: #f9fbff;
+    padding: 10px 22px;
+    background: none;
+    color: #ccf4ff;
+    border-radius: 8px;
+    border: 1px solid #47e4ff;
+    font-size: 16px;
     cursor: pointer;
-    font-weight: 600
-}
-
-.btn.primary {
-    background: linear-gradient(180deg, var(--accent), #9e1f9e);
-    box-shadow: 0 6px 18px rgba(161, 193, 18, 0.851)
+    transition: 0.2s;
 }
 
 .btn:hover {
-    transform: translateY(-2px)
+    background: rgba(0, 165, 255, 0.35);
+    box-shadow: 0 0 10px #00d4ff;
 }
 
-.hidden {
-    display: none
+.btn.primary {
+    background: #00b9ff;
+    color: black;
+    box-shadow: 0 0 12px #00c8ff;
 }
 
-/* HUD */
-aside#hud {
-    width: 300px;
-    max-width: 36vw;
-    min-width: 220px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px
+.btn.primary:hover {
+    background: #24d4ff;
 }
 
-.stat {
-    background: var(--panel);
-    padding: 12px;
-    border-radius: 10px;
-    font-weight: 600;
+/* ------------------------------
+   Mobile Virtual Controls
+--------------------------------*/
+.mobile-controls {
     display: flex;
     justify-content: space-between;
-    color: #fff
-}
-
-.controls-info {
-    font-size: 13px;
-    color: var(--muted)
-}
-
-.footer {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: auto
-}
-
-/* Mobile virtual controls */
-.mobile-controls {
-
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top:8px;
-
+    margin-top: 20px;
 }
 
 .vc {
-
-    padding: 10px 14px;
+    padding: 12px;
+    width: 70px;
+    background: rgba(0, 110, 255, 0.4);
+    border: 1px solid #29e0ff;
     border-radius: 10px;
-    border: 1px solid rgba(240, 54, 54, 0.835);
-    background: rgba(255, 255, 255, 0.02);
-    /* background-image: url(atefullah.jpg); */
-    color: #fff;
-    font-weight: 700;
-
+    color: white;
+    font-size: 18px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 15px rgba(0, 170, 255, 0.4);
 }
 
 .btn-fire {
-
-    background: linear-gradient(180deg, var(--accent-2), #ef5b86);
-    box-shadow: 0 6px 16px rgba(255, 122, 162, 0.12)
+    width: 90px !important;
+    background: rgba(255, 60, 60, 0.6);
+    border: 1px solid #ff8a8a;
+    box-shadow: 0 0 12px #ff6b6b;
 }
 
-.btn-small {
-    
-    width: 64px
-}
-
-/* responsive adjustments */
-@media (max-width:900px) {
+/* ------------------------------
+   Responsive Design
+--------------------------------*/
+@media (max-width: 900px) {
     #app {
         flex-direction: column;
-        align-items: center;
-        padding: 12px
     }
 
-    #canvas-wrap {
-        width: 94vw
+    #hud {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 15px;
+        gap: 10px;
     }
 
-    canvas {
-        height: 56vh
+    .stat {
+        width: 48%;
+        font-size: 18px;
     }
 
-    aside#hud {
-        width: 94vw;
-        max-width: none
+    .footer {
+        width: 100%;
+        font-size: 12px;
     }
 
-    .overlay {
-        pointer-events: none
+    .mobile-controls {
+        display: flex;
     }
-
-    .menu {
-        min-width: 86vw
-    }
-
-    .mobile-controls.hidden {
-        display: flex
-    }
-}
-
-/* small polish */
-.menu .muted {
-    margin-top: 6px
 }
