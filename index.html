@@ -1,98 +1,32 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ps-AF">
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Plane Shooter Game</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+    <title>Mini Mario - 20 Levels</title>
     <link rel="stylesheet" href="game.css" />
 </head>
 
 <body>
-    <div id="app">
+    <canvas id="game"></canvas>
 
-        <!-- GAME CANVAS -->
-        <div id="canvas-wrap">
-            <canvas id="gameCanvas" width="900" height="600"></canvas>
+    <!-- Mobile Controls & HUD -->
+    <div id="ui">
+        <div id="left" class="btn">◀</div>
+        <div id="right" class="btn">▶</div>
+        <div id="jump" class="btn">▲</div>
+        <div id="restart" class="btn small">⟲</div>
 
-            <!-- MENUS OVERLAY -->
-            <div id="overlay" class="overlay">
-
-                <!-- MAIN MENU -->
-                <div id="menu" class="menu">
-                    <h1>✈ Plane Shooter</h1>
-                    <p class="muted">Shoot enemies — If 3 enemies pass you, the game ends.</p>
-
-                    <div class="menu-row">
-                        <!-- START BUTTON -->
-                        <button id="startButton" class="btn primary">Start Game</button>
-                        <button id="settingsBtn" class="btn">Settings</button>
-                    </div>
-
-                    <div class="menu-row small">
-                        <div>Best Score: <strong id="menuBest">0</strong></div>
-                        <div>Highest Level: <strong id="menuLevel">1</strong></div>
-                    </div>
-
-                    <p class="hint">Keyboard: ← → Move, Space: Fire | Mobile: Swipe + Fire Button</p>
-                </div>
-
-                <!-- PAUSE MENU -->
-                <div id="pausePanel" class="menu hidden">
-                    <h2>Paused</h2>
-                    <div class="menu-row">
-                        <button id="resumeBtn" class="btn primary">Resume</button>
-                        <button id="restartBtn" class="btn">Restart</button>
-                    </div>
-                </div>
-
-                <!-- GAME OVER -->
-                <div id="gameOver" class="menu hidden">
-                    <h2>Game Over</h2>
-                    <p>Your Score: <strong id="finalScore">0</strong></p>
-                    <p>Best: <strong id="finalBest">0</strong></p>
-                    <div class="menu-row">
-                        <button id="goMenuBtn" class="btn">Main Menu</button>
-                        <button id="tryAgainBtn" class="btn primary">Try Again</button>
-                    </div>
-                </div>
-
-            </div>
+        <div id="hud">
+            <div id="level">Level: 1 / 20</div>
+            <div id="score">Score: 0</div>
+            <div id="lives">Lives: 3</div>
+            <div id="enemiesCount">Enemies: 0</div>
         </div>
-
-        <!-- RIGHT HUD PANEL -->
-        <aside id="hud">
-            <div class="stat">Score: <span id="score">0</span></div>
-            <div class="stat">Missed: <span id="misses">0</span>/3</div>
-            <div class="stat">Level: <span id="level">1</span></div>
-            <div class="stat">Best: <span id="best">0</span></div>
-
-            <div class="controls-info muted">Mobile: Swipe left/right + FIRE button</div>
-
-            <div id="mobile-controls" class="mobile-controls hidden">
-                <button id="leftBtn" class="vc btn-small">◀</button>
-                <button id="fireBtn" class="vc btn-fire">FIRE</button>
-                <button id="rightBtn" class="vc btn-small">▶</button>
-            </div>
-
-            <div class="footer muted">Simple + Clean Game — Ask if you want more features</div>
-        </aside>
-
     </div>
 
-    <!-- GAME JS -->
     <script src="game.js"></script>
-
-    <!-- START BUTTON EVENT -->
-    <script>
-        document.getElementById("startButton").addEventListener("click", () => {
-            if (typeof startGame === "function") {
-                startGame();
-                // Optional: Hide main menu overlay after start
-                document.getElementById("menu").classList.add("hidden");
-            }
-        });
-    </script>
 </body>
 
 </html>
